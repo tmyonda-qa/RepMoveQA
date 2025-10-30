@@ -1,4 +1,4 @@
-import { test as base, Page } from '@playwright/test';
+import { test as base } from '@playwright/test';
 import { Home } from '../global/home';
 import * as dotenv from 'dotenv';
 dotenv.config();

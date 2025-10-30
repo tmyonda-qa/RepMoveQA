@@ -1,9 +1,10 @@
 import { faker } from '@faker-js/faker';
-import { test, expect } from '../../fixtures/base.fixture';
+import { test } from '../../fixtures/base.fixture';
+import {dashboard} from "../../modules/dashboard/labels/dashboard.label";
 
 
 test.describe.parallel('Create new user', () => {
-    test('Should create new user', async ({ home }) => {
+    test('Create new user via UI', async ({ home }) => {
         const newUser = {
             firstName: faker.person.firstName(),
             lastName: faker.person.lastName(),
@@ -25,15 +26,14 @@ test.describe.parallel('Create new user', () => {
         await home.dashboardPage.checkWelcomeDialogExist();
         await home.dashboardPage.clickCloseButton();
         await home.dashboardPage.checkDialogNotExist();
-        await home.dashboardPage.checkDashboardTitle('Dashboard');
+        await home.dashboardPage.checkDashboardTitle(dashboard.title);
     });
 
-    test('Check required fields', async ({ home }) => {
+    test('Check signUp required fields', async ({ home }) => {
         await home.loginPage.goto();
         await home.loginPage.clickSignUpButton();
         await home.signUpPage.checkSignUpDialogExist();
         await home.signUpPage.clickSignUp();
         await home.signUpPage.required.checkAllRequiredMessages();
-
     });
 });
