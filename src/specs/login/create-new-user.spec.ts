@@ -3,22 +3,13 @@
  * Test 1 verifies user creation via UI and by checking the title on the dashboard.
  * Test 2 checks the required fields on the signUp page.
  */
-import { faker } from '@faker-js/faker';
 import { test } from '../../fixtures/base.fixture';
 import { dashboard } from '../../modules/dashboard/labels/dashboard.label';
+import { UserFixture } from '../../fixtures/user.fixture';
 
 test.describe.parallel('Create new user', () => {
   test('Create new user via UI', async ({ home }) => {
-    const newUser = {
-      firstName: faker.person.firstName(),
-      lastName: faker.person.lastName(),
-      companyName: faker.company.name(),
-      industry: 'Distributor',
-      email: faker.internet.email(),
-      country: '+380',
-      phone: `67${faker.string.numeric(7)}`,
-      password: process.env.USER_PASSWORD as string,
-    };
+    const newUser = UserFixture.data();
 
     await home.loginPage.goto();
     await home.loginPage.clickSignUpButton();

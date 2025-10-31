@@ -9,7 +9,7 @@ export class LoginPage {
   private loginButton = this.page.locator('[type="submit"]');
   private errorText = this.page.locator('[id="toast-container"]');
 
-  async goto() {
+  public async goto() {
     await this.page.goto('/auth/sign-in');
   }
 
