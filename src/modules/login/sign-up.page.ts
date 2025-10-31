@@ -3,13 +3,8 @@ import { RequiredComponent } from './components/required.component';
 import { UserData, UserFixture } from '../../fixtures/user.fixture';
 
 export class SignUpPage {
-  private readonly page: Page;
-  public readonly required: RequiredComponent;
-
-  constructor(page: Page) {
-    this.page = page;
-    this.required = new RequiredComponent(page);
-  }
+  public required = new RequiredComponent(this.page);
+  constructor(private page: Page) {}
 
   public async fillForm(data: UserData) {
     await this.fillFirstName(data.firstName);
