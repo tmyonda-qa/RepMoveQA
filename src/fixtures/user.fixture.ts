@@ -22,8 +22,8 @@ export class UserFixture {
       industry: 'Distributor',
       email: faker.internet.email(),
       phone: {
-        country: 'ua',
-        number: `380${faker.string.numeric(9)}`,
+        country: '+380',
+        number: `067${faker.string.numeric(7)}`,
       },
       password: process.env.USER_PASSWORD as string,
     };
