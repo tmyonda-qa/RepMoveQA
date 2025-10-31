@@ -1,3 +1,3 @@
 export const dashboard = {
-    title: 'Dashboard',
+  title: 'Dashboard',
 };

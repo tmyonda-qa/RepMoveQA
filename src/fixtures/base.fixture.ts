@@ -4,13 +4,13 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 type MyFixtures = {
-    home: Home;
+  home: Home;
 };
 
 export const test = base.extend<MyFixtures>({
-    home: async ({ page }, use) => {
-        await use(new Home(page));
-    },
+  home: async ({ page }, use) => {
+    await use(new Home(page));
+  },
 });
 
 export { expect } from '@playwright/test';
