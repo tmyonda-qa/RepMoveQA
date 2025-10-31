@@ -13,29 +13,22 @@ export class LoginPage {
     await this.page.goto('/auth/sign-in');
   }
 
-  async login(emailOrUser: string | UserData, password?: string) {
-    let email: string;
-    let pass: string;
-
-    if (typeof emailOrUser === 'string') {
-      email = emailOrUser;
-      pass = password!;
-    } else {
-      email = emailOrUser.email;
-      pass = emailOrUser.password;
+  public async login({ email, password }: Partial<UserData>) {
+    if (email) {
+      await this.emailInput.fill(email);
     }
-
-    await this.emailInput.fill(email);
-    await this.passwordInput.fill(pass);
+    if (password) {
+      await this.passwordInput.fill(password);
+    }
     await this.loginButton.click();
   }
 
-  async clickSignUpButton() {
+  public async clickSignUpButton() {
     const signUpButton = this.page.locator('[class="__info-button --primary --link"]');
     await signUpButton.click();
   }
 
-  async checkLoginError() {
+  public async checkLoginError() {
     await expect(this.errorText).toHaveText('Invalid to login');
   }
 }

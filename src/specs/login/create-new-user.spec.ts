@@ -1,3 +1,8 @@
+/**
+ * Description:
+ * Test 1 verifies user creation via UI and by checking the title on the dashboard.
+ * Test 2 checks the required fields on the signUp page.
+ */
 import { faker } from '@faker-js/faker';
 import { test } from '../../fixtures/base.fixture';
 import { dashboard } from '../../modules/dashboard/labels/dashboard.label';

@@ -9,56 +9,7 @@ export class SignUpPage {
     this.page = page;
     this.required = new RequiredComponent(page);
   }
-
-  async fillFirstName(firstName: string) {
-    await this.page.fill('[formcontrolname="firstName"] input', firstName);
-  }
-
-  async fillLastName(lastName: string) {
-    await this.page.fill('[formcontrolname="lastName"] input', lastName);
-  }
-
-  async fillCompanyName(companyName: string) {
-    await this.page.fill('[formcontrolname="companyName"] input', companyName);
-  }
-
-  async selectIndustry(industry: string) {
-    await this.page.click('[formcontrolname="industry"]');
-    const option = this.page.locator(`text=${industry}`);
-    await option.click();
-  }
-
-  async fillEmail(email: string) {
-    await this.page.fill('[formcontrolname="email"] input', email);
-  }
-
-  async selectCountry(country: string) {
-    await this.page.click('[formcontrolname="phone"] [class="ng-select-container"]');
-    const option = this.page.locator(`text=${country}`);
-    await option.click();
-  }
-
-  async fillPhone(phone: string) {
-    await this.page.fill(
-      '[fxlayoutalign="start start"] [class="__input ng-untouched ng-pristine ng-valid"]',
-      phone,
-    );
-  }
-
-  async fillPassword(password: string) {
-    await this.page.fill('[formcontrolname="password"] input', password);
-  }
-
-  async clickSignUp() {
-    await this.page.click('button:has-text("Sign Up")');
-  }
-
-  async checkSignUpDialogExist() {
-    const dialog = this.page.locator('[class="__form"] [fxlayoutalign="center"]');
-    await expect(dialog).toBeVisible();
-  }
-
-  async fillForm(data: {
+  public async fillForm(data: {
     firstName: string;
     lastName: string;
     companyName: string;
@@ -76,5 +27,53 @@ export class SignUpPage {
     await this.selectCountry(data.country);
     await this.fillPhone(data.phone);
     await this.fillPassword(data.password);
+  }
+
+  public async clickSignUp() {
+    await this.page.click('button:has-text("Sign Up")');
+  }
+
+  public async checkSignUpDialogExist() {
+    const dialog = this.page.locator('[class="__form"] [fxlayoutalign="center"]');
+    await expect(dialog).toBeVisible();
+  }
+
+  private async fillFirstName(firstName: string) {
+    await this.page.fill('[formcontrolname="firstName"] input', firstName);
+  }
+
+  private async fillLastName(lastName: string) {
+    await this.page.fill('[formcontrolname="lastName"] input', lastName);
+  }
+
+  private async fillCompanyName(companyName: string) {
+    await this.page.fill('[formcontrolname="companyName"] input', companyName);
+  }
+
+  private async selectIndustry(industry: string) {
+    await this.page.click('[formcontrolname="industry"]');
+    const option = this.page.locator(`text=${industry}`);
+    await option.click();
+  }
+
+  private async fillEmail(email: string) {
+    await this.page.fill('[formcontrolname="email"] input', email);
+  }
+
+  private async selectCountry(country: string) {
+    await this.page.click('[formcontrolname="phone"] [class="ng-select-container"]');
+    const option = this.page.locator(`text=${country}`);
+    await option.click();
+  }
+
+  private async fillPhone(phone: string) {
+    await this.page.fill(
+      '[fxlayoutalign="start start"] [class="__input ng-untouched ng-pristine ng-valid"]',
+      phone,
+    );
+  }
+
+  private async fillPassword(password: string) {
+    await this.page.fill('[formcontrolname="password"] input', password);
   }
 }

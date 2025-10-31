@@ -11,7 +11,7 @@ export class RequiredComponent {
   private phoneError = this.page.locator('text=The Phone is required');
   private passwordError = this.page.locator('text=The Password is required');
 
-  async checkAllRequiredMessages() {
+  public async checkAllRequiredMessages() {
     await expect(this.firstNameError).toBeVisible();
     await expect(this.lastNameError).toBeVisible();
     await expect(this.companyError).toBeVisible();
